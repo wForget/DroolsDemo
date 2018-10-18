@@ -1,0 +1,38 @@
+package com.rules
+
+import cn.wangz.drools.module.Student
+
+rule "sex is underage"
+    when
+        student: Student(age < 18)
+    then
+        student.setAdult("underage");
+    end
+
+rule "sex is adult"
+    when
+        student: Student(age >= 18)
+    then
+        student.setAdult("adult");
+    end
+
+rule "grade is poor"
+    when
+        student: Student(score < 60)
+    then
+        student.setGrade("poor");
+    end
+
+rule "grade is good"
+    when
+        student: Student(score >= 60 && score < 80)
+    then
+        student.setGrade("good");
+    end
+
+rule "grade is excellent"
+    when
+        student: Student(score >= 80)
+    then
+        student.setGrade("excellent");
+    end
